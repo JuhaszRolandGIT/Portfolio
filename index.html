@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+  <script src="bootstrap/js/jquery-3.5.1.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+  <title>Juhász Roland</title>
+</head>
+
+<body data-spy="scroll">
+  <span id="rolam"></span>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top navbar-inverse nav-color">
+    <a class="navbar-brand" href="#">Portfólió</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#rolam">Rólam</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#referenciak">Referenciák</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#elerhetosegek">Elérhetőségek</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container about">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="img/en.jpeg" alt="" class="img-fluid me" width="300px">
+      </div>
+      <div class="col-md-6 rolamszoveg">
+        <h1 id="rolam">Rólam</h1>
+        <p>Juhász Roland vagyok, jelenleg a <a href="https://jedlik.eu/">
+            Győri SZC Jedlik Ányos Gépipari és Informatikai Technikum és
+            Kollégium
+          </a> tanulója vagyok.</p>
+        <div class="tab-titles">
+          <p class="tab-links active-link" onclick="opentab('skills')">Technológiák</p>
+          <p class="tab-links" onclick="opentab('experience')">Tapasztalat</p>
+          <p class="tab-links" onclick="opentab('education')">Tanulmányok</p>
+        </div>
+        <div>
+          <div class="tab-contents active-tab" id="skills">
+            <ul>
+              <li><span>HTML5</span></li>
+              <li><span>CSS3</span></li>
+              <li><span>JavaScript</span></li>
+              <li><span>.NET</span></li>
+              <li><span>PhP</span></li>
+              <li><span>GIT</span></li>
+            </ul>
+          </div>
+          <div class="tab-contents" id="experience">
+            <ul>
+              <li><span>2023.06 - 2023.06</span><br>Axioart Kft., Győr</li>
+              <li><span>2023.03. - 2023.06 </span><br>Smartshop, otthoni munkavégzés</li>
+              <li><span>2022.11 - 2023.01 </span><br>Duna Steel</li>
+            </ul>
+          </div>
+          <div class="tab-contents" id="education">
+            <ul>
+              <li><span>2023 - </span><br>Győri SZC Jedlik Ányos Gépipari és Informatikai Technikum és
+                Kollégium, Győr</li>
+              <li><span>2021 - 2020</span><br>Komáromi Jókai Mór Gimnázium, Komárom</li>
+              <li><span>2019 - 2021</span><br>Fehér Miklós Labdarúgó Akadémia, Győr</li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h1 class="ref" id="referenciak">Referenciák</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card h-100">
+          <a href="https://github.com/JuhaszRolandGIT/GTAVI" target="_blank"><img src="img/gta.PNG" class="card-img-top kep"
+              alt="..."></a>
+          <div class="card-body">
+            <h5 class="card-title">Játék ismertető</h5>
+            <p class="card-text">Ez az oldal HTML, Bootstrap alkalmazásával készült.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <a href="https://tabaclean.hu/"><img src="img/taba.PNG" class="card-img-top kep" alt="..."></a>
+          <div class="card-body">
+            <h5 class="card-title">Autókozmetika</h5>
+            <p class="card-text">Egy kis vállalatnak készült weboldal, HTML, Bootstrap, JavaScript, PHP alkalmazásával.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <a href="https://github.com/JuhaszRolandGIT/car_rental_web"><img src="img/rent.PNG" class="card-img-top kep" alt="..."></a>
+          <div class="card-body">
+            <h5 class="card-title">Autóbérlés</h5>
+            <p class="card-text">Egy olyan oldal, aminek segítségével autót tudunk bérelni, majd küldés után elküldi a
+              tulajdonos email címére az adatokat. <br> HTML, Bootstrap, JavaScript, PHP alkalmazásával.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary">Továbbiak</button>
+
+
+
+
+
+
+
+  <script>
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+    function opentab(tabname) {
+      for (tablink of tablinks) {
+        tablink.classList.remove("active-link")
+      }
+      for (tabcontent of tabcontents) {
+        tabcontent.classList.remove("active-tab")
+      }
+      event.currentTarget.classList.add("active-link");
+      document.getElementById(tabname).classList.add("active-tab");
+    }
+  </script>
+
+  <script>
+    var sidemenu = document.getElementById("sidemenu");
+
+    function openmenu() {
+      sidemenu.style.right = "0";
+    }
+    function closemenu() {
+      sidemenu.style.right = "-200px";
+    }
+  </script>
+</body>
+
+</html>
