@@ -17,6 +17,28 @@ h1{
     color: whitesmoke;
 }
 
+.gyor {
+  color: greenyellow;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.gyor:hover {
+  text-decoration: none;
+  color: rgb(208, 82, 101);
+
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  text-decoration: none;
+  color: white;
+}
+
 .about {
     text-align: center; /* Vízszintes középre igazítás a .about osztályban */
     margin-top: 50px;
