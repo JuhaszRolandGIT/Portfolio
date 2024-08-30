@@ -1,40 +1,37 @@
 import { useState } from "react";
-import TabButton from "./TabButton";
-import Section from "./Section.jsx";
-import { EXAMPLES } from "../../data";
-
-
+import { EXAMPLES } from "../../examples.js";
 export default function Examples(){
 
 const [ selectedTopic, setSelectedTopic ] = useState('');
-function handleSelect(selectedButton){
-    setSelectedTopic(selectedButton)
+const [ selectedStyle, setSelectedStyle ] = useState(null);
+
+function handleClick(e, index){
+  setSelectedTopic(e)
+  setSelectedStyle(index)
 }
 
-  let tabContent = <p>Please select a topic.</p>
-  if(selectedTopic){
-  tabContent = (<div id='tab-content'>
-    <h3>{EXAMPLES[selectedTopic].title}</h3>
-    <p>{EXAMPLES[selectedTopic].description}</p>
-    <pre>
-      <code>
-      {EXAMPLES[selectedTopic].code}
-      </code>
-    </pre>
+let content;
+if(selectedTopic){
+  content = 
+  <div id="tab-content">
+    <h3>{selectedTopic.title}</h3>
+    <div 
+          className="li-stlye"
+          dangerouslySetInnerHTML={{ __html: selectedTopic.description }}
+        />
   </div>
-  )
+} else{
+  content = 'Válassz egy lehetőséget ↑'
 }
-    return(
-        <Section title='Examples' id='examples'>
-            <menu>
-              <TabButton isSelected={selectedTopic === 'components'} onSelect={() => handleSelect('components')}>
-                Components
-                </TabButton>
-              <TabButton isSelected={selectedTopic === 'jsx'} onSelect={() => handleSelect('jsx')}>JSX</TabButton>
-              <TabButton isSelected={selectedTopic === 'props'} onSelect={() => handleSelect('props')}>Props</TabButton>
-              <TabButton isSelected={selectedTopic === 'state'} onSelect={() => handleSelect('state')}>State</TabButton>
-            </menu>
-              {tabContent}
-            </Section>
-    )
+
+return(
+  <section id="examples">
+      <menu>
+      <button onClick={() => handleClick(EXAMPLES[0],0)} className={selectedStyle === 0 ? 'active' : ''}>Technológiák</button>
+      <button onClick={() => handleClick(EXAMPLES[1],1)} className={selectedStyle === 1 ? 'active' : ''}>Tapasztalat</button>
+      <button onClick={() => handleClick(EXAMPLES[2],2)} className={selectedStyle === 2 ? 'active' : ''}>Tanulmányok</button>
+      </menu>
+      {content}
+  </section>
+)
 }
