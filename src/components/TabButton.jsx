@@ -8,4 +8,3 @@ export default function TabButton({children, onSelect, isSelected}){
     </li>
 )
 }
-
