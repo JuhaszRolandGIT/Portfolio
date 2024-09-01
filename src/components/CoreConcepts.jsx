@@ -4,7 +4,7 @@ import { EXAMPLES } from "../../data.js";
 export default function CoreConcepts(){
     return(
         <section id="core-concepts">
-        <h2>Core concepts</h2>
+        <h2>Munkáim</h2>
         <ul>
           {EXAMPLES.map((item) => (
           <CoreConcept key={item.title} {...item}/>))}
