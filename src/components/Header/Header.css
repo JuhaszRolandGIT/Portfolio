@@ -25,3 +25,8 @@ header {
     color: #8964b0;
     font-family: "Roboto Condensed", sans-serif;
   }
+
+  .highlight {
+    color: rgba(9, 118, 118, 0.996);
+    font-weight: bold;
+  }
