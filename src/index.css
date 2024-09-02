@@ -16,7 +16,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-  /* min-height: 80rem; */
+  min-height: 60rem;
 }
 
 main {
@@ -86,6 +86,10 @@ main h2 {
   border-radius: 6px;
   background-color: #2f1d43;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Középre igazítja vízszintesen */
+  
 }
 
 #tab-content h3 {
@@ -95,12 +99,66 @@ main h2 {
 #tab-content code {
   font-size: 1rem;
 }
-
-.li-stlye {
+.li-style {
   list-style-type: none;
-  padding-left: 0;
-  line-height: 2rem;
-  margin-top: 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.li-style li {
   color: #c78f3f;
   font-weight: bold;
+  margin: 5px 0;
+}
+
+.job-item {
+  cursor: pointer;
+  margin-bottom: 10px;
+  list-style: none;
+  text-align: center;
+}
+
+.job-date {
+  color: #cf2c2c; 
+  font-weight: bold;
+  justify-content: center;
+}
+
+.job-name {
+  color: #c78f3f;
+  font-weight: bold;
+  position: relative;
+  display: inline-block; 
+}
+
+.job-name::after {
+  content: ''; 
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1.5px; 
+  background-color: #2d7280; 
+  transform: scaleX(0); 
+  transform-origin: bottom right;
+  transition: transform 0.3s ease;
+}
+
+.job-name:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left; 
+}
+
+.job-details {
+  margin-top: 3rem;
+}
+
+.job-details h4{
+  color: rgb(56, 105, 80);
+  font-size: 1.5rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
 }
