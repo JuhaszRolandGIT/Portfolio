@@ -1,22 +1,31 @@
+import { useState, useEffect } from 'react';
 import reactImg from '../../assets/react-core-concepts.png';
 import './Header.css';
 
-const reactDescriptions = ["Fundamental", "Crucial", "Core"];
+const reactDescriptions = ["SzoftverFejlesztő", "SzoftverTesztelő"];
+
 function genRandomInt(max) {
-  return Math.floor(Math.random() * (max + 1));
+  return Math.floor(Math.random() * max);
 }
 
-
 export default function Header() {
-    const randomN = reactDescriptions[genRandomInt(2)]
-    return (
-      <header>
-        <img src={reactImg} alt="Stylized atom" />
-        <h1>React Essentials</h1>
-        <p>
-          {randomN} React concepts you will need for almost any app you are going
-          to build!
-        </p>
-      </header>
-    );
-  }
+  const [currentDescription, setCurrentDescription] = useState(reactDescriptions[0]);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentDescription(reactDescriptions[genRandomInt(reactDescriptions.length)]);
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  return (
+    <header>
+      <img src={reactImg} alt="Stylized atom" />
+      <h1>Juhász Roland</h1>
+      <p>
+        {currentDescription}
+      </p>
+    </header>
+  );
+}
