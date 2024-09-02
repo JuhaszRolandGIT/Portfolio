@@ -16,13 +16,14 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-  min-height: 80rem;
+  /* min-height: 80rem; */
 }
 
 main {
   width: 90%;
   max-width: 50rem;
   margin: auto;
+  font-style: italic;
 }
 
 #core-concepts {
@@ -50,6 +51,7 @@ main h2 {
 }
 
 #examples menu {
+  justify-content: center;
   margin: 1rem 0;
   padding: 0;
   display: flex;
@@ -92,4 +94,13 @@ main h2 {
 
 #tab-content code {
   font-size: 1rem;
+}
+
+.li-stlye {
+  list-style-type: none;
+  padding-left: 0;
+  line-height: 2rem;
+  margin-top: 2rem;
+  color: #c78f3f;
+  font-weight: bold;
 }
