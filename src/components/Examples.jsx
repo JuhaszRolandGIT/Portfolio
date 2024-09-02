@@ -1,26 +1,51 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { EXAMPLES } from "../../examples.js";
-import Modal from "./Modal.jsx";
 
 export default function Examples() {
-  const [selectedTopic, setSelectedTopic] = useState('');
+  const [selectedTopic, setSelectedTopic] = useState(null);
   const [selectedStyle, setSelectedStyle] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false); // Modal állapot
-  const [modalContent, setModalContent] = useState(''); // Modal tartalom
+  const [selectedJob, setSelectedJob] = useState(null);
 
   function handleClick(e, index) {
     setSelectedTopic(e);
     setSelectedStyle(index);
+    setSelectedJob(null); // Reset the job selection when selecting a new topic
   }
 
-  function handleTextClick(title) {
-    // Beállítjuk a modal tartalmát "Hello World"-re
-    setModalContent('Hello World');
-    setIsModalOpen(true); // Modal megnyitása
+  function handleJobClick(job) {
+    setSelectedJob(job); // Set the selected job when a job is clicked
   }
 
-  function handleCloseModal() {
-    setIsModalOpen(false); // Modal bezárása
+  const variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  function renderJobs(jobs) {
+    return (
+      <ul>
+        {jobs.map((job, index) => (
+          <li key={index} onClick={() => handleJobClick(job)} className="job-item">
+            <div className="job-date">{job.date}</div>
+            <div className="job-name">{job.name}</div>
+            <AnimatePresence>
+              {selectedJob === job && (
+                <motion.div
+                  className="job-detail"
+                  variants={variants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="hidden"
+                >
+                  <p>{job.info}</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </li>
+        ))}
+      </ul>
+    );
   }
 
   let content;
@@ -28,11 +53,14 @@ export default function Examples() {
     content = (
       <div id="tab-content">
         <h3>{selectedTopic.title}</h3>
-        <div
-          className="li-stlye"
-          dangerouslySetInnerHTML={{ __html: selectedTopic.description }}
-          onClick={() => handleTextClick(selectedTopic.title)} // Kattintás esemény
-        />
+        <div>
+          {/* Render jobs if available */}
+          {selectedTopic.jobs ? (
+            renderJobs(selectedTopic.jobs)
+          ) : (
+            <div dangerouslySetInnerHTML={{ __html: selectedTopic.description }} />
+          )}
+        </div>
       </div>
     );
   } else {
@@ -47,7 +75,6 @@ export default function Examples() {
         <button onClick={() => handleClick(EXAMPLES[2], 2)} className={selectedStyle === 2 ? 'active' : ''}>Tanulmányok</button>
       </menu>
       {content}
-      {isModalOpen && <Modal content={modalContent} onClose={handleCloseModal} />}
     </section>
   );
 }
