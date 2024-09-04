@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import reactImg from '../../assets/react-core-concepts.png';
 import './Header.css';
 
-const reactDescriptions = ["Szoftvertejlesztő", "Szoftvertesztelő"];
+const reactDescriptions = ["SzoftverFejlesztő", "SzoftverTesztelő"];
 
 function genRandomInt(max) {
   return Math.floor(Math.random() * max);
@@ -20,11 +20,11 @@ export default function Header() {
   }, []);
 
   const renderDescription = () => {
-    if (currentDescription === "Szoftvertesztelő") {
+    if (currentDescription === "SzoftverTesztelő") {
       return (
         <>
           Szoftver
-          <span className="highlight">tesztelő</span>
+          <span className="highlight">Tesztelő</span>
         </>
       );
     }
