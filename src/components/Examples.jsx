@@ -10,16 +10,17 @@ export default function Examples() {
   function handleClick(e, index) {
     setSelectedTopic(e);
     setSelectedStyle(index);
-    setSelectedJob(null); // Reset the job selection when selecting a new topic
+    setSelectedJob(null);
   }
 
   function handleJobClick(job) {
-    setSelectedJob(job); // Set the selected job when a job is clicked
+    setSelectedJob(job); 
   }
 
-  const variants = {
+  const tabVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -30 },
   };
 
   function renderJobs(jobs) {
@@ -33,10 +34,10 @@ export default function Examples() {
               {selectedJob === job && (
                 <motion.div
                   className="job-detail"
-                  variants={variants}
+                  variants={tabVariants}
                   initial="hidden"
                   animate="visible"
-                  exit="hidden"
+                  exit="exit"
                 >
                   <p>{job.info}</p>
                 </motion.div>
@@ -48,25 +49,6 @@ export default function Examples() {
     );
   }
 
-  let content;
-  if (selectedTopic) {
-    content = (
-      <div id="tab-content">
-        <h3>{selectedTopic.title}</h3>
-        <div>
-          {/* Render jobs if available */}
-          {selectedTopic.jobs ? (
-            renderJobs(selectedTopic.jobs)
-          ) : (
-            <div dangerouslySetInnerHTML={{ __html: selectedTopic.description }} />
-          )}
-        </div>
-      </div>
-    );
-  } else {
-    content = 'Válassz egy lehetőséget ↑';
-  }
-
   return (
     <section id="examples">
       <menu>
@@ -74,7 +56,39 @@ export default function Examples() {
         <button onClick={() => handleClick(EXAMPLES[1], 1)} className={selectedStyle === 1 ? 'active' : ''}>Tapasztalat</button>
         <button onClick={() => handleClick(EXAMPLES[2], 2)} className={selectedStyle === 2 ? 'active' : ''}>Tanulmányok</button>
       </menu>
-      {content}
+      <AnimatePresence mode="wait">
+        {selectedTopic ? (
+          <motion.div
+            key={selectedStyle}
+            variants={tabVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            transition={{ duration: 0.4 }}
+            id="tab-content"
+          >
+            <h3>{selectedTopic.title}</h3>
+            <div>
+              {selectedTopic.jobs ? (
+                renderJobs(selectedTopic.jobs)
+              ) : (
+                <div dangerouslySetInnerHTML={{ __html: selectedTopic.description }} />
+              )}
+            </div>
+          </motion.div>
+        ) : (
+          <motion.div
+            key="default"
+            variants={tabVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            transition={{ duration: 0.4 }}
+          >
+            Válassz egy lehetőséget ↑
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

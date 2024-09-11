@@ -1,5 +1,5 @@
 import React from 'react';
-import './Modal.css'; // Győződj meg róla, hogy ez tartalmazza a modal stílusait
+import './Modal.css';
 
 export default function Modal({ content, onClose }) {
   return (
