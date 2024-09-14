@@ -8,24 +8,24 @@ export const EXAMPLES = [
     image: componentsImg,
     title: 'QUIZ',
     description:
-      '',
+      'HAMAROSAN',
   },
   {
     image: jsxImg,
     title: 'Bank rendszer',
     description:
-      '',
+      'HAMAROSAN',
   },
   {
     image: propsImg,
     title: 'Könyvtár',
     description:
-      '',
+      'HAMAROSAN',
   },
   {
     image: stateImg,
     title: 'Foglalási rendszer',
     description:
-      '',
+      'HAMAROSAN',
   },
 ];
