@@ -7,6 +7,7 @@ export const EXAMPLES = [
       <li>Bootstrap5</li>
       <li>Vue.js</li>
       <li>Angular</li>
+      <li>React</li>
       <li>Node.js</li>
       <li>PHP/Laravel</li>
       <li>C#/.NET/WPF</li>
