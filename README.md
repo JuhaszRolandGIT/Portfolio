@@ -7,5 +7,5 @@ npm install
 ```
 
 ```
-npm install framer-motion (animációs könyvtárÖ
+npm install framer-motion (animációs könyvtár)
 ```
