@@ -55,6 +55,7 @@ export default function Examples() {
         <button onClick={() => handleClick(EXAMPLES[0], 0)} className={selectedStyle === 0 ? 'active' : ''}>Technológiák</button>
         <button onClick={() => handleClick(EXAMPLES[1], 1)} className={selectedStyle === 1 ? 'active' : ''}>Tapasztalat</button>
         <button onClick={() => handleClick(EXAMPLES[2], 2)} className={selectedStyle === 2 ? 'active' : ''}>Tanulmányok</button>
+        <button>Bezár</button>
       </menu>
       <AnimatePresence mode="wait">
         {selectedTopic ? (
