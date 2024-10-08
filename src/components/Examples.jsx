@@ -17,7 +17,7 @@ export default function Examples() {
     setSelectedJob(job); 
   }
 
-  function handleClose(job) {
+  function handleClose() {
     setSelectedTopic(''); 
     setSelectedStyle(selectedJob)
   }

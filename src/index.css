@@ -177,10 +177,12 @@ ul {
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  color: wheat;
+  font-weight: bold;
 }
 
 .closeBtn:hover {
   background-color: #1b082f;
-  color: #ebe7ef;
+  color: #9b0f0f;
 }
 
